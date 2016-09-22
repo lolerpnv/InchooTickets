@@ -1,0 +1,37 @@
+<?php
+/**
+ * @var Toni_Ticket_Block_View $this
+ * @var Toni_Ticket_Model_Ticket $ticket
+ */
+
+$ticket = $this->getTicket();
+if($ticket == null) {
+    return;
+}
+
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Ticket #').$ticket->getEntityId(); ?></h1>
+</div>
+
+<div class="container">
+    <h3 class="notice-text">
+        <?php echo $ticket->getTicketSubject(); ?>
+    </h3>
+    <div class="text">
+        <?php echo nl2br($ticket->getTicketMessage()) ?>
+    </div>
+    <br/>
+    <?php echo $this->getChildHtml('response.ticket.block'); ?>
+</div>
+<form action="<?php echo $this->getCloseTicketUrl(); ?>" method="post">
+    <input type="hidden" id="entity_id" name="entity_id" value="<?php echo $ticket->getEntityId(); ?>"/>
+    <button class="button" type="submit">Close Ticket</button>
+</form>
+<form action="<?php echo $this->getNewResponseUrl(); ?>" method="post">
+    <input type="hidden" name="entity_id" id="entity_id" value="<?php echo $ticket->getEntityId(); ?>"
+    <div class="input-box">
+        <textarea name="response" id="response" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Response')) ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+    </div>
+    <button class="button" type="submit">New Response</button>
+</form>

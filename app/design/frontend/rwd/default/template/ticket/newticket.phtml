@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var Toni_Ticket_Block_Ticket $this
+ *
+ */
+?>
+<form action="<?php echo $this->getPostNewTicketUrl(); ?>" id="contactForm" method="post" class="scaffold-form">
+    <div class="fieldset">
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="subject" class="required"><em>*</em><?php echo Mage::helper('toni_ticket')->__('Subject') ?></label>
+                    <div class="input-box">
+                        <input name="subject" id="subject" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('toni_ticket')->__('Subject')) ?>" value="<?php echo $this->escapeHtml($this->helper('toni_ticket')->__('Subject')) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="message" class="required"><em>*</em><?php echo Mage::helper('toni_ticket')->__('Message') ?></label>
+                    <div class="input-box">
+                        <textarea name="message" id="message" cols="5" rows="3" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('toni_ticket')->__('Message')) ?>" value="<?php echo $this->escapeHtml($this->helper('toni_ticket')->__('Message')) ?>" class="input-text required-entry validate-email"></textarea>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <button class="button" type="submit" >
+        Create New Ticket
+    </button>
+
+</form>

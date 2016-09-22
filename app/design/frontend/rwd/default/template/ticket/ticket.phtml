@@ -1,0 +1,42 @@
+<?php
+/** @var Toni_Ticket_Block_Ticket $this
+ * @var Toni_Ticket_Model_Ticket $ticket
+ */
+?>
+
+<div class="page-title">
+    <h2>Tickets</h2>
+</div>
+<?php $tickets = $this->getTickets()->getItems();
+if(!empty($tickets)): ?>
+<table class="data table-orders" >
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+        <thead>
+        <tr>
+            <th class="number"><?php echo $this->__("Ticket Id")?></th>
+        <th class="textarea"><?php echo $this->__("Message")?></th>
+        <th > </th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($tickets as $ticket): ?>
+        <tr>
+            <td class="number"><p><?php echo $ticket->getEntityId(); ?></p></td>
+            <td class="text"><?php echo $ticket->getTicketSubject(); ?></td>
+            <th class="a-center view"><span class="nobr"> <a href="<?php echo $this->getTicketViewUrl($ticket); ?>" class="current">View Ticket</a></span></th>
+        </tr>
+        <tr>
+
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php else: echo "<span class='text' >You have no open tickets</span>"; endif; ?>
+<br/><br/>
+<a href="<?php echo $this->getNewTicketUrl(); ?>">
+    <span class="button">
+        Add Tickets
+    </span>
+</a>
