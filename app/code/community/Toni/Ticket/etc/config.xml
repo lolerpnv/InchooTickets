@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+@formatter:on
+-->
 <config>
     <modules>
         <Toni_Ticket>
@@ -7,77 +9,57 @@
         </Toni_Ticket>
     </modules>
     <global>
-
         <helpers>
             <toni_ticket>
                 <class>Toni_Ticket_Helper</class>
             </toni_ticket>
         </helpers>
-
         <blocks>
             <ticket>
                 <class>Toni_Ticket_Block</class>
             </ticket>
         </blocks>
         <models>
-
             <ticket>
-
                 <class>Toni_Ticket_Model</class>
-
                 <resourceModel>ticket_resource</resourceModel>
-
             </ticket>
-
             <ticket_resource>
-
                 <class>Toni_Ticket_Model_Resource</class>
-
                 <entities>
-
                     <ticket>
-
                         <table>ticket_ticket</table>
-
                     </ticket>
-
                     <response>
-
                         <table>ticket_response</table>
-
                     </response>
-
                 </entities>
-
             </ticket_resource>
-
         </models>
-
         <resources>
-
             <toni_ticket_setup>
-
                 <setup>
-
                     <module>Toni_Ticket</module>
-
                 </setup>
-
             </toni_ticket_setup>
-
         </resources>
+        <template>
+            <email>
+                <ticket module="toni_ticket">
+                    <label>Ticket Mail</label>
+                    <file>toni_ticket/ticketTemplate.html</file>
+                    <type>html</type>
+                </ticket>
+            </email>
+        </template>
     </global>
     <frontend>
         <routers>
             <ticket>
                 <use>standard</use>
-
                 <args>
-
                     <module>Toni_Ticket</module>
-
                     <frontName>ticket</frontName>
-
                 </args>
             </ticket>
         </routers>
@@ -109,4 +91,18 @@
             </adminhtml>
         </routers>
     </admin>
+    <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>default</name>
+                </package>
+                <theme>
+                    <template>inchoo</template>
+                    <skin>inchoo</skin>
+                    <layout>inchoo</layout>
+                </theme>
+            </design>
+        </admin>
+    </stores>
 </config>
